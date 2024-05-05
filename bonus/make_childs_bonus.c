@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_childs_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42madrid.co    +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 11:59:36 by jolivare          #+#    #+#             */
-/*   Updated: 2024/05/03 14:25:26 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/05/05 19:45:35 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ void	make_last_child(t_pipe *pipe, char *arg, char *outfile)
 		child_error(pipe);
 	dup2(pipe->new_tube[READ], STDIN_FILENO);
 	dup2(pipe->outfile_fd, STDOUT_FILENO);
-	close(pipe->tube[READ]);
-	close(pipe->tube[WRITE]);
+	close(pipe->new_tube[READ]);
+	close(pipe->new_tube[WRITE]);
 	close(pipe->outfile_fd);
 	execve(pipe->path, pipe->args, pipe->envp);
 	child_error(pipe);

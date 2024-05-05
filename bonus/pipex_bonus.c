@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42madrid.co    +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 12:19:20 by jolivare          #+#    #+#             */
-/*   Updated: 2024/05/03 15:05:42 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/05/06 00:19:58 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
 
-int	close_parent(t_pipe *pipex)
+void	close_parent(t_pipe *pipex)
 {
 	pid_t	current_child;
 	int		status;
@@ -25,22 +25,21 @@ int	close_parent(t_pipe *pipex)
 	close(pipex->new_tube[1]);
 	while (1)
 	{
-		current_child = waitpid(-1, &status, 0);
+		current_child = waitpid(pipex->last_child, &status, 0);
+		printf("Hola\n");
 		if (current_child <= 0)
 			break;
 		if (current_child == pipex->last_child)
 		{
 			if (WEXITSTATUS(status))
-				return(WEXITSTATUS(status));
+				pipex->status = WEXITSTATUS(status);
 		}
 	}
-	return (WEXITSTATUS(status));
 }
 
 int main(int argc, char **argv, char **envp)
 {
 	t_pipe 	pipex;
-	int		status;
 	int		i;
 	pid_t	first_child;
 	pid_t	middle_child;
@@ -83,8 +82,8 @@ int main(int argc, char **argv, char **envp)
 			exit (1);
 		if (middle_child == 0)
 			make_mid_childs(&pipex, argv[i]);
+		close(pipex.tube[0]);
 		close(pipex.tube[1]);
-		close(pipex.new_tube[1]);
 		i++;
 	}
 	last_child = fork();
@@ -93,8 +92,8 @@ int main(int argc, char **argv, char **envp)
 		exit (1);
 	if (last_child == 0)
 		make_last_child(&pipex, argv[argc - 2], argv[argc - 1]);
-	status = close_parent(&pipex);
+	close_parent(&pipex);
 	if (pipex.here_doc == 1)
 		unlink("here_doc");
-	exit(status);
+	exit(pipex.status);
 }

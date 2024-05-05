@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42madrid.co    +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 12:19:55 by jolivare          #+#    #+#             */
-/*   Updated: 2024/05/03 14:38:53 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/05/06 00:15:40 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_pipe
 	int		aux_file_fd;
 	int		here_doc;
 	int		argc;
-	int		*childs;
+	int		status;
 	char	**envp;
 	char	**args;
 	char	*path;
@@ -66,7 +66,7 @@ void	pipe_error(void);
 void	make_first_child(t_pipe *pipe, char *arg, char *infile);
 void	make_mid_childs(t_pipe *pipe, char *arg);
 void	make_last_child(t_pipe *pipe, char *arg, char *outfile);
-int		close_parent(t_pipe *pipex);
+void	close_parent(t_pipe *pipex);
 
 void	do_fork(t_pipe *pipex);
 int		first_fork(t_pipe *pipex, pid_t *first_child);
