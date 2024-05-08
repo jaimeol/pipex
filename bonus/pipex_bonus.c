@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 12:19:20 by jolivare          #+#    #+#             */
-/*   Updated: 2024/05/06 00:19:58 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/05/08 11:47:28 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,10 @@ void	close_parent(t_pipe *pipex)
 	pid_t	current_child;
 	int		status;
 
-	close(pipex->infile_fd);
-	close(pipex->outfile_fd);
 	close(pipex->tube[0]);
-	close(pipex->tube[1]);
-	close(pipex->new_tube[0]);
-	close(pipex->new_tube[1]);
 	while (1)
 	{
-		current_child = waitpid(pipex->last_child, &status, 0);
-		printf("Hola\n");
+		current_child = waitpid(-1, &status, 0);
 		if (current_child <= 0)
 			break;
 		if (current_child == pipex->last_child)
@@ -35,6 +29,9 @@ void	close_parent(t_pipe *pipex)
 				pipex->status = WEXITSTATUS(status);
 		}
 	}
+	if (pipex->here_doc == 1)
+		unlink("here_doc");
+	exit (status);
 }
 
 int main(int argc, char **argv, char **envp)
@@ -51,7 +48,7 @@ int main(int argc, char **argv, char **envp)
 	
 	if (argc < 5)
 		args_error();
-	if (ft_strncmp(argv[1], "here_doc", 8) == 0)
+	if (ft_strncmp(argv[1], "here_doc", ft_strlen(argv[1])) == 0)
 	{
 		i = 4;
 		pipex.here_doc = 1;
@@ -71,10 +68,11 @@ int main(int argc, char **argv, char **envp)
 		else
 			make_first_child(&pipex, argv[2], argv[1]);	
 	}
+	close(pipex.tube[WRITE]);
 	while (i < argc - 2)
 	{
-		pipex.tube[0] = pipex.new_tube[0];
-		pipex.tube[1] = pipex.new_tube[1];
+		// pipex.tube[0] = pipex.new_tube[0];
+		// pipex.tube[1] = pipex.new_tube[1];
 		if (pipe(pipex.new_tube) == -1)
 			pipe_error();
 		middle_child = fork();
@@ -83,7 +81,9 @@ int main(int argc, char **argv, char **envp)
 		if (middle_child == 0)
 			make_mid_childs(&pipex, argv[i]);
 		close(pipex.tube[0]);
-		close(pipex.tube[1]);
+		pipex.tube[0] = pipex.new_tube[0];
+		//close(pipex.tube[1]);
+		close(pipex.new_tube[1]);
 		i++;
 	}
 	last_child = fork();
@@ -92,7 +92,8 @@ int main(int argc, char **argv, char **envp)
 		exit (1);
 	if (last_child == 0)
 		make_last_child(&pipex, argv[argc - 2], argv[argc - 1]);
-	close_parent(&pipex);
+	if (last_child > 0)
+		close_parent(&pipex);
 	if (pipex.here_doc == 1)
 		unlink("here_doc");
 	exit(pipex.status);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_childs_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 11:59:36 by jolivare          #+#    #+#             */
-/*   Updated: 2024/05/05 19:45:35 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/05/08 11:35:56 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	make_first_child(t_pipe *pipe, char *arg, char *infile)
 		child_error(pipe);
 	if (get_values(arg, pipe) == 1)
 		child_error(pipe);
-	dup2(pipe->new_tube[WRITE], STDOUT_FILENO);
+	dup2(pipe->tube[WRITE], STDOUT_FILENO);
 	dup2(pipe->infile_fd, STDIN_FILENO);
 	close(pipe->tube[READ]);
 	close(pipe->tube[WRITE]);
@@ -34,8 +34,7 @@ void	make_mid_childs(t_pipe *pipe, char *arg)
 	dup2(pipe->tube[READ], STDIN_FILENO);
 	dup2(pipe->new_tube[WRITE], STDOUT_FILENO);
 	close (pipe->tube[READ]);
-	close (pipe->tube[WRITE]);
-	close (pipe->new_tube[READ]);
+	close(pipe->new_tube[READ]);
 	close (pipe->new_tube[WRITE]);
 	execve(pipe->path, pipe->args, pipe->envp);
 	child_error(pipe);
@@ -47,10 +46,10 @@ void	make_last_child(t_pipe *pipe, char *arg, char *outfile)
 		child_error(pipe);
 	if (get_values(arg, pipe) == 1)
 		child_error(pipe);
-	dup2(pipe->new_tube[READ], STDIN_FILENO);
+	dup2(pipe->tube[READ], STDIN_FILENO);
 	dup2(pipe->outfile_fd, STDOUT_FILENO);
-	close(pipe->new_tube[READ]);
-	close(pipe->new_tube[WRITE]);
+	close(pipe->tube[READ]);
+	close(pipe->tube[WRITE]);
 	close(pipe->outfile_fd);
 	execve(pipe->path, pipe->args, pipe->envp);
 	child_error(pipe);

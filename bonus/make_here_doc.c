@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_here_doc.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 11:35:27 by jolivare          #+#    #+#             */
-/*   Updated: 2024/04/12 11:52:02 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/05/08 12:02:13 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	write_here_doc(char *limiter, t_pipe *pipex)
 			close (aux_file);
 			exit (1);
 		}
-		if (!ft_strncmp(limiter, text, ft_strlen(limiter)))
+		if (!ft_strncmp(limiter, text, ft_strlen(text) - 1))
 			break;
 		write(aux_file, text, ft_strlen(text));
 		free (text);
