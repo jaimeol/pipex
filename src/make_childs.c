@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_childs.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 11:49:26 by jolivare          #+#    #+#             */
-/*   Updated: 2024/04/09 18:39:18 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/05/08 12:55:50 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	make_first_child(t_pipe *pipe, char *arg, char *infile)
 
 void	make_second_child(t_pipe *pipe, char *arg, char *outfile)
 {
-	
 	if (create_file (outfile, pipe) == 1)
 		child_error(pipe);
 	if (get_values(arg, pipe) == 1)

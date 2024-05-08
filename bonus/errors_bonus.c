@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 15:28:32 by jolivare          #+#    #+#             */
-/*   Updated: 2024/05/03 14:27:30 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/05/08 12:33:23 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ void	args_error(void)
 {
 	ft_printf("Invalid args: [infile cmd1 cmd2 outfile]\n");
 	exit (1);
+}
+
+void	here_doc_error(void)
+{
+	ft_printf("Invalid args: [here_doc limiter cmd... outfile]\n");
 }
 
 void	child_error(t_pipe *pipe)

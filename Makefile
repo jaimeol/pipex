@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+         #
+#    By: jolivare < jolivare@student.42madrid.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/01 10:25:16 by jolivare          #+#    #+#              #
-#    Updated: 2024/04/29 14:50:01 by jolivare         ###   ########.fr        #
+#    Updated: 2024/05/08 12:25:13 by jolivare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
