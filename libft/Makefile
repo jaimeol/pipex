@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+         #
+#    By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/22 00:30:06 by jolivare          #+#    #+#              #
-#    Updated: 2024/04/10 15:13:51 by jolivare         ###   ########.fr        #
+#    Updated: 2024/05/09 11:41:36 by jolivare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 BONUS_NAME = .bonus
 
-SOURCES =		ft_isdigit.c ft_memset.c ft_strdup.c ft_strncmp.c \
+SOURCES =		ft_isdigit.c ft_memset.c ft_strdup.c ft_strncmp.c ft_strcmp.c\
 				ft_atoi.c ft_isprint.c ft_putchar_fd.c ft_striteri.c ft_strnstr.c \
 				ft_bzero.c ft_itoa.c ft_putendl_fd.c ft_strjoin.c ft_strrchr.c \
 				ft_calloc.c	ft_memchr.c	ft_putnbr_fd.c	ft_strlcat.c ft_strtrim.c \

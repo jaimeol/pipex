@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 11:35:27 by jolivare          #+#    #+#             */
-/*   Updated: 2024/05/09 11:36:27 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/05/09 11:54:02 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,28 @@
 
 void	write_here_doc(char *limiter, t_pipe *pipex)
 {
-	int		aux_file;
 	char	*text;
+	char	*complete_limiter;
 
-	aux_file = open("here_doc", O_CREAT | O_WRONLY | O_APPEND, 0644);
-	if (aux_file < 0)
-		exit (1);
+	open_aux_file(pipex);
+	complete_limiter = ft_strjoin(limiter, "\n");
 	while (1)
 	{
 		write (1, "here_doc>", 9);
 		text = get_next_line(0);
 		if (text == NULL)
 		{
-			close (aux_file);
+			close (pipex->aux_file_fd);
 			exit (1);
 		}
-		if (!ft_strcmp(limiter, text))
+		if (!ft_strcmp(complete_limiter, text))
 			break ;
-		write(aux_file, text, ft_strlen(text));
+		write(pipex->aux_file_fd, text, ft_strlen(text));
 		free (text);
 	}
 	free (text);
-	close (aux_file);
+	close (pipex->aux_file_fd);
+	free(complete_limiter);
 	pipex->infile_fd = open("here_doc", O_RDONLY);
 	if (pipex->infile_fd < 0)
 		exit (1);

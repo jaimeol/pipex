@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42madrid.co    +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 12:19:55 by jolivare          #+#    #+#             */
-/*   Updated: 2024/05/08 12:55:14 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/05/09 11:49:50 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct s_pipe
 
 char	*get_next_line(int fd);
 
-int		create_aux_file(char *aux_file, t_pipe *pipex);
+void	open_aux_file(t_pipe *pipex);
 int		create_file(char *outfile, t_pipe *pipex);
 int		open_file(char *infile, t_pipe *pipex);
 
