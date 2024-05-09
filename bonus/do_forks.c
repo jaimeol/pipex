@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   do_forks.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42madrid.co    +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 14:42:43 by jolivare          #+#    #+#             */
-/*   Updated: 2024/05/08 12:54:19 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/05/10 00:14:48 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ void	middle_fork(t_pipe *pipex)
 			exit (1);
 		if (middle_child == 0)
 			make_mid_childs(pipex, pipex->args[pipex->arg_i]);
-		close(pipex->tube[0]);
+		close(pipex->tube[READ]);
 		pipex->tube[0] = pipex->new_tube[0];
-		close(pipex->new_tube[1]);
+		close(pipex->new_tube[WRITE]);
 	}
 }
 

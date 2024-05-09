@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42madrid.co    +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 12:19:20 by jolivare          #+#    #+#             */
-/*   Updated: 2024/05/08 12:53:51 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/05/10 00:15:07 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	close_parent(t_pipe *pipex)
 	pid_t	current_child;
 	int		status;
 
-	close(pipex->tube[0]);
+	close(pipex->tube[READ]);
 	while (1)
 	{
 		current_child = waitpid(-1, &status, 0);
