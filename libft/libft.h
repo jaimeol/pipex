@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 15:35:48 by jolivare          #+#    #+#             */
-/*   Updated: 2024/04/30 16:52:39 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/05/09 11:36:11 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ char	*ft_strrchr(const char *s, int c);
 size_t	ft_strlcat(char *dest, const char *src, size_t destsize);
 size_t	ft_strlcpy(char *dest, const char *src, size_t destsize);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
