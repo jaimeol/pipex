@@ -6,7 +6,7 @@
 #    By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/01 10:25:16 by jolivare          #+#    #+#              #
-#    Updated: 2024/05/09 11:37:18 by jolivare         ###   ########.fr        #
+#    Updated: 2024/06/17 10:26:45 by jolivare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,27 +30,27 @@ CFLAGS = -Wall -Wextra -Werror
 REMOVE = rm -f
 CC = cc
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
-	
+
 all: $(NAME)
 
-makelib:
+$(LIBFT):
 	$(MAKE) -sC libft/
 	$(MAKE) -sC printf/	
 
-$(NAME): $(OBJECTS) makelib
+$(NAME): $(OBJECTS) $(LIBFT)
 	$(CC) $(OBJECTS) $(CFLAGS) -o $(NAME) -Llibft/ -lft -Lprintf/ -lftprintf
 
 bonus: .bonus
-.bonus: $(BONUS_OBJS) makelib
+.bonus: $(BONUS_OBJS) $(LIBFT)
 	$(CC) $(BONUS_OBJS) $(CFLAGS) -o $(NAME) -Llibft/ -lft -Lprintf/ -lftprintf
+	@touch .bonus
 
 clean:
 	make clean -sC libft
 	make clean -sC printf
 	$(REMOVE) $(BONUS_OBJS)
 	$(REMOVE) $(OBJECTS)
+	@rm -rf .bonus
 
 fclean: clean
 	make fclean -sC libft

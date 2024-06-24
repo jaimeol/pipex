@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42madrid.co    +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 15:28:32 by jolivare          #+#    #+#             */
-/*   Updated: 2024/05/08 12:33:23 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/06/13 12:17:52 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,5 @@ void	child_error(t_pipe *pipe)
 	close(pipe->tube[1]);
 	close(pipe->infile_fd);
 	close(pipe->outfile_fd);
-	exit(1);
+	exit(127);
 }

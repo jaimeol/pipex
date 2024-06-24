@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42madrid.co    +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 12:41:42 by jolivare          #+#    #+#             */
-/*   Updated: 2024/05/08 12:54:08 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/06/13 16:42:05 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	**get_path(t_pipe *pipe)
 		{
 			paths = ft_split(&pipe->envp[i][5], ':');
 			return (paths);
-		}	
+		}
 		i++;
 	}
 	return (NULL);
@@ -69,7 +69,7 @@ int	get_values(char *command, t_pipe *pipe)
 	pipe->args = ft_split(command, ' ');
 	if (ft_strchr(pipe->args[0], '/') != NULL)
 	{
-		pipe->path = command;
+		pipe->path = pipe->args[0];
 		return (0);
 	}
 	paths = get_path(pipe);

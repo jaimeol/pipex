@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar_pf.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:20:07 by jolivare          #+#    #+#             */
-/*   Updated: 2023/11/14 09:09:38 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/06/12 17:22:01 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	ft_putchar_pf(char c, size_t *cont)
 {
-	write (1, &c, 1);
+	write (2, &c, 1);
 	(*cont)++;
 }

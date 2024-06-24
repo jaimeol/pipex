@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 12:19:20 by jolivare          #+#    #+#             */
-/*   Updated: 2024/05/10 00:15:07 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/06/13 17:17:06 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,17 @@ void	close_parent(t_pipe *pipex)
 	pid_t	current_child;
 	int		status;
 
-	close(pipex->tube[READ]);
+	close(pipex->tube[0]);
 	while (1)
 	{
 		current_child = waitpid(-1, &status, 0);
 		if (current_child <= 0)
 			break ;
 		if (current_child == pipex->last_child)
-		{
-			if (WEXITSTATUS(status))
-				pipex->status = WEXITSTATUS(status);
-		}
+			pipex->status = WEXITSTATUS(status);
 	}
 	if (pipex->here_doc == 1)
 		unlink("here_doc");
-	exit (status);
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -59,5 +55,5 @@ int	main(int argc, char **argv, char **envp)
 	do_fork(&pipex);
 	if (pipex.last_child > 0)
 		close_parent(&pipex);
-	return (0);
+	exit(pipex.status);
 }

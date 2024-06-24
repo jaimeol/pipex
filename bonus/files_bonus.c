@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:00:20 by jolivare          #+#    #+#             */
-/*   Updated: 2024/05/09 11:49:31 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/06/13 16:44:14 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,17 @@ int	open_file(char *infile, t_pipe *pipex)
 
 int	create_file(char *outfile, t_pipe *pipex)
 {
-	pipex->outfile_fd = open(outfile, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (pipex->here_doc == 1)
+		pipex->outfile_fd = open(outfile, O_WRONLY | O_CREAT | O_APPEND, 0644);
+	else
+		pipex->outfile_fd = open(outfile, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (pipex->outfile_fd == -1)
 		return (1);
 	return (0);
 }
 
 void	open_aux_file(t_pipe *pipex)
-{	
+{
 	pipex->aux_file_fd = open("here_doc", O_CREAT | O_WRONLY | O_APPEND, 0644);
 	if (pipex->aux_file_fd < 0)
 		exit (1);

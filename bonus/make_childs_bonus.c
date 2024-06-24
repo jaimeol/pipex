@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_childs_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42madrid.co    +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 11:59:36 by jolivare          #+#    #+#             */
-/*   Updated: 2024/05/08 11:35:56 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/06/13 17:00:37 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 11:35:27 by jolivare          #+#    #+#             */
-/*   Updated: 2024/05/09 11:54:02 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/06/17 10:28:13 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,14 @@ void	write_here_doc(char *limiter, t_pipe *pipex)
 		write (1, "here_doc>", 9);
 		text = get_next_line(0);
 		if (text == NULL)
-		{
-			close (pipex->aux_file_fd);
-			exit (1);
-		}
+			break ;
 		if (!ft_strcmp(complete_limiter, text))
 			break ;
 		write(pipex->aux_file_fd, text, ft_strlen(text));
 		free (text);
 	}
-	free (text);
+	if (text)
+		free (text);
 	close (pipex->aux_file_fd);
 	free(complete_limiter);
 	pipex->infile_fd = open("here_doc", O_RDONLY);
