@@ -16,9 +16,13 @@ Writing the final output to a file or stdout.
 For the bonus part of the project, additional features and optimizations were implemented to enhance the program's performance and capabilities:
 
 Multiple Pipes: Handling multiple pipes to connect several commands in a chain.
+
 Error Handling: Improved error handling for various edge cases and system call failures.
+
 Efficiency: Optimized process management to reduce overhead and improve execution speed.
+
 Here_doc: Implemented the here_doc functionality to allow input directly from the command line until a specified delimiter is encountered. This feature is useful for interactive scripts.
+
 ## Example
 
 ./pipex file1 "cmd1" "cmd2" "cmd3" file2
