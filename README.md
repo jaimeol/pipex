@@ -22,10 +22,12 @@ Here_doc: Implemented the here_doc functionality to allow input directly from th
 ## Example
 
 ./pipex file1 "cmd1" "cmd2" "cmd3" file2
+
 This command takes input from file1, processes it through cmd1, cmd2, and cmd3, and writes the output to file2.
 
 ## Here_Doc Example
 For the here_doc feature, the usage is as follows:
 
 ./pipex here_doc LIMITER "cmd1" "cmd2" file2
+
 This command allows input to be provided directly from the command line until the LIMITER is encountered, processes it through cmd1 and cmd2, and writes the output to file2.
