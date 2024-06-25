@@ -9,9 +9,11 @@ The program uses system calls such as fork, execve, dup2, and pipe to create a s
 ## Basic Usage
 The basic functionality involves:
 
-Reading input from a file or stdin.
-Passing the input through multiple commands.
-Writing the final output to a file or stdout.
+1. Reading input from a file or stdin.
+
+2. Passing the input through multiple commands.
+
+3. Writing the final output to a file or stdout.
 ## Bonus Features
 For the bonus part of the project, additional features and optimizations were implemented to enhance the program's performance and capabilities:
 
