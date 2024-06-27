@@ -23,7 +23,7 @@ Error Handling: Improved error handling for various edge cases and system call f
 
 Efficiency: Optimized process management to reduce overhead and improve execution speed.
 
-Here_doc: Implemented the here_doc functionality to allow input directly from the command line until a specified delimiter is encountered. This feature is useful for interactive scripts.
+Here_doc: Implemented the here_doc functionality to allow input directly from the command line until a specified delimiter is encountered.
 
 ## Example
 
